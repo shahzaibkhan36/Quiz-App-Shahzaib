@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz App — Landing</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="page">
+  <header class="container">
+    <h1 class="title">Dynamic Quiz App</h1>
+    <p class="subtitle">Choose a subject, enter your name, and start!</p>
+  </header>
+
+  <main class="container card fade-in">
+    <form id="startForm" class="form-grid">
+      <label class="field">
+        <span class="label">Your name</span>
+        <input id="username" type="text" placeholder="e.g., Ayesha Khan" required />
+      </label>
+
+      <fieldset class="field">
+        <legend class="label">Select subject</legend>
+        <label class="radio"><input type="radio" name="subject" value="HTML" required /> HTML</label>
+        <label class="radio"><input type="radio" name="subject" value="CSS" required /> CSS</label>
+        <label class="radio"><input type="radio" name="subject" value="JavaScript" required /> JavaScript</label>
+      </fieldset>
+
+      <div class="actions">
+        <button class="btn primary" type="submit">Start Quiz →</button>
+        <a class="btn" href="./leaderboard.html" aria-label="View leaderboard">View Leaderboard</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="container muted">© 2025 — CS311 Quiz</footer>
+
+  <script src="./app.js"></script>
+  <script>
+    // Landing: save username + subject then go to quiz
+    document.getElementById('startForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const subject = [...document.querySelectorAll('input[name="subject"]')]
+        .find(r => r.checked)?.value;
+
+      if (!username || !subject) return;
+
+      localStorage.setItem('qa_username', username);
+      localStorage.setItem('qa_subject', subject);
+      // Reset any previous session state
+      localStorage.removeItem('qa_answers');
+      localStorage.removeItem('qa_score');
+      localStorage.removeItem('qa_result');
+      window.location.href = './quiz.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz — Result</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="page">
+  <header class="container">
+    <h1 class="title small">Your Result</h1>
+    <div class="muted">
+      <span id="subjectOut"></span> • <span id="usernameOut"></span>
+    </div>
+  </header>
+
+  <main class="container card fade-in">
+    <section class="scoregrid">
+      <div class="scorebox">
+        <div class="scorelabel">Score</div>
+        <!-- Default value (will be replaced by JS) -->
+        <div id="scoreVal" class="scorevalue">0 / 10</div>
+      </div>
+      <div class="scorebox">
+        <div class="scorelabel">Percentage</div>
+        <!-- Default value (will be replaced by JS) -->
+        <div id="percentVal" class="scorevalue">0%</div>
+      </div>
+    </section>
+
+    <h2 class="mt">Answer Review</h2>
+    <ol id="reviewList" class="review"></ol>
+
+    <div class="actions mt">
+      <a class="btn" href="./index.html">← Choose another subject</a>
+      <button id="retakeBtn" class="btn primary">Retake same subject</button>
+      <a class="btn" href="./leaderboard.html">View Leaderboard</a>
+    </div>
+  </main>
+
+  <footer class="container muted">
+    Correct answers are green; your incorrect selections are red.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+  <script>initResultPage();</script>
+</body>
+</html>
